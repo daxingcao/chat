@@ -28,7 +28,7 @@ body {
   border-bottom:1px solid #95B8E7;
   padding: 0 10px 0 10px;
   list-style: none;
-  overflow-y: scroll;
+  overflow-y: auto;
   overflow-x: hidden;
 }
 

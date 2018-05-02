@@ -19,7 +19,7 @@
         </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>
-    springMVC的servlet映射，过滤所有
+    <!-- springMVC的servlet映射，过滤所有 -->
     <servlet-mapping>
         <servlet-name>example</servlet-name>
         <url-pattern>/</url-pattern>
