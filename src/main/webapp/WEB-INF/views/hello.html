@@ -1,0 +1,76 @@
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="keywords" content="jquery,ui,easy,easyui,web">
+	<meta name="description" content="easyui help you build your web page easily!">
+	<title>jQuery EasyUI Demo</title>
+	<link href="css/adv.css" rel="stylesheet" type="text/css" />
+	<link href="css/bootstrap-theme.css" rel="stylesheet" />
+	<link href="css/bootstrap.min.css" rel="stylesheet" />
+	<link href="css/font-awesome.min.css" rel="stylesheet" />
+	<link rel="stylesheet" href="css/chat.css" media="screen" type="text/css" />
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script>
+		function catchs(){
+			var param = window.name;
+			alert(param);
+			alert(window.self == window.parent);
+			var ele = window.top.getElementByClassName(param);
+		}
+	</script>
+</head>
+<body>
+<div id="convo" class="chat-div" data-from="Sonu Joshi">
+ <!-- onmouseover="showScroll()" onmouseout="hiddenScroll()" -->
+	<ul id="scrollUL" class="chat-thread">
+		<li id='li-right' class='kuang'>hello!</li>
+		<li id='li-left' class='kuang'>Hi!</li>
+	</ul>
+	<div class="credits">
+		<div id="tools" class="tool_div">
+			<p style="font-size: 20px;padding-left: 10px;">
+				<i class="icon-github-alt" style="margin: 0px 10px;"></i><i class="icon-cut" style="margin: 0px 10px;"></i>
+			</p>
+		</div>
+		<textarea id="txtContent" class="txt"></textarea>
+		<input id="username" type="hidden" value="${sessionScope.user.username }" >
+		<input id="send" type="button" onclick="sendContent()" value="发送" class="btn btn-info"/>
+		<i style="float: right;padding: 10px 20px;">按Ctrl+enter换行</i>
+	</div>
+</div>
+<script type="text/javascript">
+	var height = window.innerHeight-24;
+	$("#convo").css({
+		"height":height+"px"
+	});
+	//鼠标移到聊天框显示下拉条
+	function showScroll(){
+		$("#scrollUL").css({
+			"overflow-y":"scroll"
+		})
+	}
+	//鼠标移出聊天框隐藏下拉条
+	function hiddenScroll(){
+		$("#scrollUL").css({
+			"overflow-y":"hidden"
+		})
+	}
+	//键盘按键控制
+	document.onkeydown = function(e){
+		e = e || event;
+		//enter触发事件
+		if(e.keyCode == 13 && !e.ctrlKey){
+			sendContent();
+			e.cancelBubble=true;
+			e.preventDefault();
+			e.stopPropagation();
+		}
+		if(e.keyCode == 13 && e.ctrlKey){
+			var e = $("#txtContent");
+			e.val(e.val()+'\n');
+		}
+	}
+</script>
+</body>
+</html>

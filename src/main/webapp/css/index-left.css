@@ -1,0 +1,98 @@
+@charset "UTF-8";
+body{
+	margin:0px;
+}
+.left-div{
+	width: 200px;
+	height: 100%;
+	float: left;
+	background-color: #333744;
+}
+/* .add-body{
+	padding-top: 100px;
+}
+.add-div {
+	width: 300px;
+	margin: auto;
+} */
+/* .add-div-button1 {
+	float: left;
+}
+.add-div-button2 {
+	float: right;
+} */
+.left-list-default{
+	margin: 0px;
+	border: 0px;
+}
+.left-list-div{
+	border: 0px;
+	background-color: #333744;
+}
+.left-list-body{
+/* 	border: 0px; */
+	background-color: #333744;
+	color: white;
+	display: block;
+	width: 200px;
+	/* height: 40px; */
+	/* padding: 10px 15px; */
+}
+.left-list-hand{
+	width: 200px;
+	height: 100px;
+	background-color: #4A5064;
+}
+.left-list-hand a{
+	background-color: #4A5064;
+	color: white;
+	display: block;
+	width: 200px;
+	height: 40px;
+	padding: 10px 15px;
+}
+.left-list-hand a:hover{
+	text-decoration: none;
+	background-color: #1ABC9C;
+}
+.left-list-hand a:visited{
+	text-decoration: none;
+}
+.left-list-hand a:link {
+	text-decoration: none;
+}
+.left-list-hand a:active {
+	text-decoration: none;
+}
+.left-list-body h5{
+	margin: 0px;
+}
+.left-list-body a{
+	color:white;
+	display: block;
+	width: 200px;
+	height: 36px;
+	margin:0px;
+	padding: 10px 40px;
+}
+.left-list-body a:hover {
+	text-decoration: none;
+	background-color: #2C3E50;
+}
+.left-list-body a:visited {
+	text-decoration: none;
+}
+.left-list-body a:active {
+	text-decoration: none;
+}
+.left-list-body a:link {
+	text-decoration: none;
+}
+#workRadio {
+	margin: 10px 0 0;
+}
+.chat_room{
+	width: calc(100% - 200px);
+	height: 100%;
+	float: right;
+}

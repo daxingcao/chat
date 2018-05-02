@@ -1,0 +1,54 @@
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="keywords" content="jquery,ui,easy,easyui,web">
+	<meta name="description" content="easyui help you build your web page easily!">
+	<title>jQuery EasyUI Demo</title>
+	<link rel="stylesheet" type="text/css" href="themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="themes/icon.css">
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.4.4.min.js"></script>
+	<script type="text/javascript" src="js/jquery.easyui.min.js"></script>
+	<script>
+		function addTab(title, url){
+			if ($('#tt').tabs('exists', title)){
+				$('#tt').tabs('select', title);
+			} else {
+				var content = '<iframe name="'+title+'" scrolling="auto" frameborder="0"  src="'+url+'" style="width:100%;height:100%;"></iframe>';
+				$('#tt').tabs('add',{
+					title:title,
+					content:content,
+					closable:true
+				});
+			}
+		}
+		$('#tt').tabs({
+				<!-- plain: $('#plain').is(':checked'), -->
+				<!-- narrow: $('#narrow').is(':checked'), -->
+				pill: true,
+				justified: true
+		})
+	</script>
+</head>
+<body>
+	<div style="margin-bottom:10px">
+		<a href="#" id="google" onclick="addTab('google','hello.html')">google</a>
+		<a href="#" class="easyui-linkbutton" onclick="addTab('jquery','hello.html')">jquery</a>
+		<button id="but1" value="google">google</button>
+		<button id="but2" value="jquery" onclick="text2()">jquery</button>
+	</div>
+	<script type="text/javascript">
+		$("#but1").click(function() {
+			var t1 = $("iframe[name='google']").contents().find("#scrollUL");
+			html = "<li id='li-right' class='kuang'>hello!</li>";
+			t1.append(html);
+		})
+		function text2() {
+			var t2 = $("iframe[name='jquery']").contents().find("#scrollUL");
+			html = "<li id='li-left' class='kuang'>Hi!</li>";
+			t2.append(html);
+		}
+	</script>
+	<div id="tt" class="easyui-tabs" style="width:1000px;height:500px;">
+	</div>
+</body>
+</html>

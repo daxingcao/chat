@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chat.main.mapper.LoginUserMapper">
+  <resultMap id="BaseResultMap" type="com.chat.main.entity.LoginUser">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="USERNAME" jdbcType="VARCHAR" property="username" />
+    <result column="PASSWORD" jdbcType="VARCHAR" property="password" />
+    <result column="LAST_DATE" jdbcType="DATE" property="lastDate" />
+    <result column="CREATE_DATE" jdbcType="DATE" property="createDate" />
+    <result column="UPDATE_DATE" jdbcType="DATE" property="updateDate" />
+    <result column="USER_ID" jdbcType="INTEGER" property="userId" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    id, USERNAME, PASSWORD, LAST_DATE, CREATE_DATE, UPDATE_DATE, USER_ID
+  </sql>
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from login_user
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="loginValid" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from login_user
+    where USERNAME = #{userName,jdbcType=VARCHAR}
+    AND PASSWORD = #{password,jdbcType=VARCHAR}
+  </select>
+  
+  <select id="getFriendList" parameterType="java.lang.String" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from login_user where USERNAME  &lt;&gt; #{username,jdbcType=VARCHAR}
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from login_user
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+
+  <insert id="insert" parameterType="com.chat.main.entity.LoginUser">
+    insert into login_user (id, USERNAME, PASSWORD, 
+      LAST_DATE, CREATE_DATE, UPDATE_DATE, USER_ID
+      )
+    values (#{id,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{lastDate,jdbcType=DATE}, #{createDate,jdbcType=DATE}, #{updateDate,jdbcType=DATE}, #{userId,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.chat.main.entity.LoginUser">
+    insert into login_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="username != null">
+        USERNAME,
+      </if>
+      <if test="password != null">
+        PASSWORD,
+      </if>
+      <if test="lastDate != null">
+        LAST_DATE,
+      </if>
+      <if test="createDate != null">
+        CREATE_DATE,
+      </if>
+      <if test="updateDate != null">
+        UPDATE_DATE,
+      </if>
+      <if test="userId != null">
+        USER_ID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="lastDate != null">
+        #{lastDate,jdbcType=DATE},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=DATE},
+      </if>
+      <if test="updateDate != null">
+        #{updateDate,jdbcType=DATE},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+
+  <update id="updateByPrimaryKeySelective" parameterType="com.chat.main.entity.LoginUser">
+    update login_user
+    <set>
+      <if test="username != null">
+        USERNAME = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        PASSWORD = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="lastDate != null">
+        LAST_DATE = #{lastDate,jdbcType=DATE},
+      </if>
+      <if test="createDate != null">
+        CREATE_DATE = #{createDate,jdbcType=DATE},
+      </if>
+      <if test="updateDate != null">
+        UPDATE_DATE = #{updateDate,jdbcType=DATE},
+      </if>
+      <if test="userId != null">
+        USER_ID = #{userId,jdbcType=INTEGER}
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.chat.main.entity.LoginUser">
+    update login_user
+    set USERNAME = #{username,jdbcType=VARCHAR},
+      PASSWORD = #{password,jdbcType=VARCHAR},
+      LAST_DATE = #{lastDate,jdbcType=DATE},
+      CREATE_DATE = #{createDate,jdbcType=DATE},
+      UPDATE_DATE = #{updateDate,jdbcType=DATE},
+      USER_ID = #{userId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

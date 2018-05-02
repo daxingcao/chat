@@ -1,0 +1,104 @@
+
+body,p,ul,ol,li,dl,dt,dd,input,h1,h2,h3,h4,form,hr { padding:0; margin:0; }
+
+.div_login_right{
+    width: 400px;
+    height: 300px;
+    float: right;
+    padding-top: 30px;
+    padding-left: 50px;
+    padding-right: 50px;
+    /* border-radius: 10px; */
+  /*   border-bottom-right-radius:10px;
+    border-top-right-radius: 10px; */
+    background-color: honeydew;
+ 	/* opacity: 0.8; */
+}
+.div_login_left{
+	border-bottom-left-radius: 10px;
+	border-top-left-radius: 10 px;
+	width: 300px;
+	height: 300px;
+	float: left;
+}
+.login_input{
+    margin-bottom: 10px;
+    margin-top: 20px;
+}
+.login_check{
+	width: 100%;
+	float: left;
+}
+.login_a{
+    float: right;
+}
+.register_a{
+	margin-top: 10px;
+}
+.select_div{
+	clear: both;
+}
+.login_button{
+	display: table;
+    clear: both;
+    width: 300px;
+    margin-bottom:10px;
+    font-family: KaiTi;
+    font-size: 18px;
+    font-weight: lighter;
+}
+.button_div{
+	margin-top: 20px;
+}
+.div_h2{
+	font-size: 40px;
+    font-weight: bolder;
+    color: orange;
+}
+.login_i{
+	font-family: SimHei;
+}
+.div_header{
+	margin-bottom: 120px;
+    width: 100%;
+    text-align: center;
+}
+.div_content{
+	width: 700px;
+	height: 300px;
+    margin: auto;
+    box-shadow: 10px 10px 10px black;
+}
+.body_div{
+	width: 100%;
+	margin: auto;
+	min-width:1000px;
+	height:800px;
+    background: url(../images/body_beijing1.jpg) no-repeat top center;
+    background-size: 100% 100%;
+    padding-top: 50px;
+}
+/* .update_pwd_div {
+	width: 450px;
+    height: 300px;
+    margin: auto;
+    padding-top: 100px;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+.update_pwd_button {
+	display: table;
+    clear: both;
+    width: 100px;
+    float: right;
+    margin-bottom: 10px;
+    font-family: KaiTi;
+    font-size: 18px;
+    font-weight: lighter;
+}
+.update_label{
+    margin-bottom: 10px;
+    margin-top: 20px;
+    padding-right: 0px;
+    padding-left: 40px;
+} */
