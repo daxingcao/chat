@@ -9,7 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class UserIndexController {
 
-	@RequestMapping("/login")
+	@RequestMapping("/index.jhtml")
 	public ModelAndView skipLoginView(HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("WEB-INF/views/login");
