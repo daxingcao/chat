@@ -12,8 +12,27 @@
 <script type="text/javascript" src="<%=request.getContextPath() %>/assets/js/jquery.min.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath() %>/js/jquery.easyui.min.js"></script>
 <script src="<%=request.getContextPath() %>/js/reconnecting-websocket.min.js"></script>
-<script src="<%=request.getContextPath() %>/js/index.js"></script>
 </head>
+<script type="text/javascript">
+var username = null;
+var socket = null;
+$(function() {
+	username = $("#username").val();
+	//新建WebSocket对象，最后的/websocket对应服务器端的@ServerEndpoint("/websocket")
+	socket = new ReconnectingWebSocket('ws://${pageContext.request.getServerName()}:${pageContext.request.getServerPort()}${pageContext.request.contextPath}/sendMessage/'+username); 
+	socket.onopen = function(){
+		alert("Connection success!")
+	}
+	// 处理服务器端发送的数据
+	socket.onmessage = function(event) {
+		addMessage(event.data);
+	};
+	socket.onclose = function(){
+		alert("Connection is broken!")
+	}
+})
+</script>
+<script src="<%=request.getContextPath() %>/js/index.js"></script>
 <body>
 <input id="username" type="hidden" value="${sessionScope.user.username }">
 <div id="content" style="width: 100%;height: 600px;min-width: 1000px;">
@@ -32,7 +51,7 @@
 				<div id="collapseOne" class="panel-collapse collapse in">
 					<div class="left-list-body">
 						<c:forEach items="${requestScope.friendList }" var="user">
-							<h5><a id="${user.username }" onclick="addTab('${user.username }','<%=request.getContextPath()%>/chatView')" href="javascript:void(0)">${user.username }</a></h5>
+							<h5><a id="${user.username }" onclick="addTab('${user.username }','<%=request.getContextPath()%>/chatView')" href="javascript:void(0)"><img alt="" src="<%=request.getContextPath()%>/images/page_photo.jpg" /><b>${user.username }</b></a></h5>
 						</c:forEach>
 						<!-- <h5><a id="http://www.youku.com/" onclick="addTab('zhangsan','/chatView')" href="javascript:void(0)">zhangsan</a></h5>
 						<h5><a id="http://www.iqiyi.com/" onclick="addTab('lisi','/chatView')" href="javascript:void(0)">lisi</a></h5> -->

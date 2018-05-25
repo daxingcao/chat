@@ -71,9 +71,19 @@ body{
 	color:white;
 	display: block;
 	width: 200px;
-	height: 36px;
+	height: 40px;
 	margin:0px;
-	padding: 10px 40px;
+	/* padding: 10px 40px; */
+}
+.left-list-body a > img{
+	width: 30px;
+	height: 30px;
+	margin: 5px 5px 5px 10px;
+	border-radius: 15px;
+}
+.left-list-body b{
+	position: absolute;
+	line-height: 40px;
 }
 .left-list-body a:hover {
 	text-decoration: none;
