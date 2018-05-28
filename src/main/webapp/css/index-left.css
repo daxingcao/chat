@@ -64,7 +64,7 @@ body{
 .left-list-hand a:active {
 	text-decoration: none;
 }
-.left-list-body h5{
+.left-list-body h6,h5,h4,h3,h2,h1{
 	margin: 0px;
 }
 .left-list-body a{
@@ -73,17 +73,14 @@ body{
 	width: 200px;
 	height: 40px;
 	margin:0px;
-	/* padding: 10px 40px; */
+	line-height: 40px;
 }
 .left-list-body a > img{
+	float: left;
 	width: 30px;
 	height: 30px;
 	margin: 5px 5px 5px 10px;
 	border-radius: 15px;
-}
-.left-list-body b{
-	position: absolute;
-	line-height: 40px;
 }
 .left-list-body a:hover {
 	text-decoration: none;

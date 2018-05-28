@@ -3,24 +3,6 @@
 		return session;
 	}
 	
-	var username = null;
-	var socket = null;
-	$(function() {
-		username = $("#username").val();
-		//新建WebSocket对象，最后的/websocket对应服务器端的@ServerEndpoint("/websocket")
-		socket = new ReconnectingWebSocket('ws://${pageContext.request.getServerName()}:${pageContext.request.getServerPort()}${pageContext.request.contextPath}/sendMessage/'+username); 
-		socket.onopen = function(){
-			alert("Connection success!")
-		}
-		// 处理服务器端发送的数据
-		socket.onmessage = function(event) {
-			addMessage(event.data);
-		};
-		socket.onclose = function(){
-			alert("Connection is broken!")
-		}
-	})
-	
 	function addMessage(data){
 		var content = JSON.parse(data);
 		if(username == content.sender){
