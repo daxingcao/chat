@@ -18,6 +18,8 @@ public class LoginUser {
     private Date createDate;
     @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone="AMT+8")
     private Date updateDate;
+    
+    private Integer headFileId;
 
     public Integer getId() {
         return id;
@@ -74,4 +76,13 @@ public class LoginUser {
     public void setUpdateDate(Date updateDate) {
         this.updateDate = updateDate;
     }
+
+	public Integer getHeadFileId() {
+		return headFileId;
+	}
+
+	public void setHeadFileId(Integer headFileId) {
+		this.headFileId = headFileId;
+	}
+    
 }

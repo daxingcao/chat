@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chat.main.mapper.SysFileMapper">
+  <resultMap id="BaseResultMap" type="com.chat.main.entity.SysFile">
+    <id column="fileid" jdbcType="INTEGER" property="fileid" />
+    <result column="filename" jdbcType="VARCHAR" property="filename" />
+    <result column="createdate" jdbcType="TIMESTAMP" property="createdate" />
+    <result column="filetype" jdbcType="VARCHAR" property="filetype" />
+    <result column="filepath" jdbcType="VARCHAR" property="filepath" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    fileid, filename, createdate, filetype, filepath
+  </sql>
+  
+  <select id="findAllFile" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from sys_file
+  </select>
+  
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from sys_file
+    where fileid = #{fileid,jdbcType=INTEGER}
+  </select>
+  
+  <select id="selectSysFileList" parameterType="java.util.Map" resultMap="BaseResultMap">
+  	select <include refid="Base_Column_List" /> 
+  	from sys_file
+  	<where>
+  		<if test="filePath != null">
+  			filepath like CONCAT(CONCAT('%',#{filePath}),'%')
+  		</if>
+  		<if test="fileType != null">
+  			and filetype like CONCAT(CONCAT('%',#{fileType}),'%')
+  		</if>
+  	</where>
+  	ORDER BY createdate DESC
+  	<if test="showNum != null and showNum != 0">
+  		limit #{showNum}
+  	</if>
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from sys_file
+    where fileid = #{fileid,jdbcType=INTEGER}
+  </delete>
+  
+  <insert id="insert" parameterType="com.chat.main.entity.SysFile">
+  	<selectKey resultType="java.lang.Integer" keyProperty="fileid" order="AFTER" >
+  		SELECT LAST_INSERT_ID()
+  	</selectKey>
+    insert into sys_file (fileid, filename, createdate, 
+      filetype, filepath)
+    values (#{fileid,jdbcType=INTEGER}, #{filename,jdbcType=VARCHAR}, #{createdate,jdbcType=TIMESTAMP}, 
+      #{filetype,jdbcType=VARCHAR}, #{filepath,jdbcType=VARCHAR})
+  </insert>
+  
+  <insert id="insertSelective" parameterType="com.chat.main.entity.SysFile">
+  	<selectKey resultType="java.lang.Integer" keyProperty="fileid" order="AFTER" >
+  		SELECT LAST_INSERT_ID()
+  	</selectKey>
+    insert into sys_file
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="fileid != null">
+        fileid,
+      </if>
+      <if test="filename != null">
+        filename,
+      </if>
+      <if test="createdate != null">
+        createdate,
+      </if>
+      <if test="filetype != null">
+        filetype,
+      </if>
+      <if test="filepath != null">
+        filepath,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="fileid != null">
+        #{fileid,jdbcType=INTEGER},
+      </if>
+      <if test="filename != null">
+        #{filename,jdbcType=VARCHAR},
+      </if>
+      <if test="createdate != null">
+        #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="filetype != null">
+        #{filetype,jdbcType=VARCHAR},
+      </if>
+      <if test="filepath != null">
+        #{filepath,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateByPrimaryKeySelective" parameterType="com.chat.main.entity.SysFile">
+    update sys_file
+    <set>
+      <if test="filename != null">
+        filename = #{filename,jdbcType=VARCHAR},
+      </if>
+      <if test="createdate != null">
+        createdate = #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="filetype != null">
+        filetype = #{filetype,jdbcType=VARCHAR},
+      </if>
+      <if test="filepath != null">
+        filepath = #{filepath,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where fileid = #{fileid,jdbcType=INTEGER}
+  </update>
+  
+  <update id="updateByPrimaryKey" parameterType="com.chat.main.entity.SysFile">
+    update sys_file
+    set filename = #{filename,jdbcType=VARCHAR},
+      createdate = #{createdate,jdbcType=TIMESTAMP},
+      filetype = #{filetype,jdbcType=VARCHAR},
+      filepath = #{filepath,jdbcType=VARCHAR}
+    where fileid = #{fileid,jdbcType=INTEGER}
+  </update>
+</mapper>
