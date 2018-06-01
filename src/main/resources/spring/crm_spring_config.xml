@@ -52,6 +52,11 @@
         <property name="url" value="jdbc:mysql://172.16.0.26:3306/test"/>
         <property name="username" value="hro"/>
         <property name="password" value="Hro@1%4"/>
+        <property name="maxActive" value="10" />
+      	<property name="maxIdle" value="60000" />
+      	<property name="maxWait" value="60000" />
+      	<property name="testOnBorrow" value="true" />
+      	<property name="validationQuery" value="select 1" />
     </bean>
     
     <!-- <bean id="myDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
