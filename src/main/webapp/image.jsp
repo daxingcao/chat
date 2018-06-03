@@ -165,7 +165,7 @@ $("#submit").click(function(){
 			if(data.success){
 				$("#showImg").attr("src","loadImage.do?fileId="+data.fileId);
 			}else {
-				$("#showImg").attr("src",<%=request.getContextPath() %>data.path);
+				$("#showImg").attr("src",<%=request.getContextPath() %>/+data.path);
 			}
 		}
 	})

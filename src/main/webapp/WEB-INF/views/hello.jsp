@@ -51,7 +51,16 @@ $(function() {
 				<div id="collapseOne" class="panel-collapse collapse in">
 					<div class="left-list-body">
 						<c:forEach items="${requestScope.friendList }" var="user">
-							<h3><a id="${user.username }" onclick="addTab('${user.username }','<%=request.getContextPath()%>/chatView')" href="javascript:void(0)"><img alt="" src="<%=request.getContextPath() %>/loadImage.do?fileId=${user.headFileId}" /><b>${user.username }</b></a></h3>
+							<h3><a id="${user.username }" onclick="addTab('${user.username }','<%=request.getContextPath()%>/chatView')" href="javascript:void(0)">
+								<c:choose>
+									<c:when test="${not empty user.headFileId }">
+										<img alt="" src="<%=request.getContextPath() %>/loadImage.do?fileId=${user.headFileId}" /><b>${user.username }</b>
+									</c:when>
+									<c:otherwise>
+										<img alt="" src="<%=request.getContextPath() %>/images/tubiao.png" /><b>${user.username }</b>
+									</c:otherwise>
+								</c:choose>
+							</a></h3>
 						</c:forEach>
 						<!-- <h5><a id="http://www.youku.com/" onclick="addTab('zhangsan','/chatView')" href="javascript:void(0)">zhangsan</a></h5>
 						<h5><a id="http://www.iqiyi.com/" onclick="addTab('lisi','/chatView')" href="javascript:void(0)">lisi</a></h5> -->

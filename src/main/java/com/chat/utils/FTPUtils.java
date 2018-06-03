@@ -109,6 +109,7 @@ public class FTPUtils {
 		if(!ftp.changeWorkingDirectory(filePath)) {
 			return null;
 		}
+		ftp.setFileType(FTP.BINARY_FILE_TYPE);
 		return ftp.retrieveFileStream(fileName);
 	}
 	
