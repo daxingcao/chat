@@ -40,18 +40,19 @@ body{
 }
 .left-list-hand{
 	width: 200px;
-	height: 100px;
+	height: 130px;
+	color:white;
 	background-color: #4A5064;
 }
 .left-list-hand a{
-	background-color: #4A5064;
+/* 	background-color: #4A5064; */
 	color: white;
-	display: block;
+/* 	display: block;
 	width: 200px;
 	height: 40px;
-	padding: 10px 15px;
+	padding: 10px 15px; */
 }
-.left-list-hand a:hover{
+/* .left-list-hand a:hover{
 	text-decoration: none;
 	background-color: #1ABC9C;
 }
@@ -63,8 +64,8 @@ body{
 }
 .left-list-hand a:active {
 	text-decoration: none;
-}
-.left-list-body h6,h5,h4,h3,h2,h1{
+} */
+#menuList h6,h5,h4,h3,h2,h1{
 	margin: 0px;
 }
 .left-list-body a{

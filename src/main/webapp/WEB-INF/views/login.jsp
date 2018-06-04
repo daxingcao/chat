@@ -63,7 +63,7 @@
 			<img alt="图片不存在" src="images/login_toubiao.jpg">
 		</div>
 		<div class="div_login_right">
-			<form id="loginForm" action="sys/loginValid" method="post">
+			<form id="loginForm" action="main/loginValid" method="post">
 				<input type="text" size="16" class="form-control login_input" id="userName" 
 				   name="userName" placeholder="用户名" />
 				<input type="password" class="form-control login_input" id="password" 

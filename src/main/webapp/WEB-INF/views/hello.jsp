@@ -42,28 +42,38 @@ $(function() {
 		<div class="left-list-div" id="containor">
 			<div class='panel panel-default left-list-default'>
 				<div class="left-list-hand">
-					<h4 class="panel-title">
-						<a data-toggle="collapse" href="#collapseOne">
-							<i class="glyphicon glyphicon-plus-sign"></i>&nbsp;视频
-						</a>
-					</h4>
+					<div style="height: 100px;">
+						<div style="width: 100px;height: 100px;margin: auto;">
+							<c:choose>
+								<c:when test="${not empty user.headFileId }">
+									<img alt="" src="<%=request.getContextPath() %>/main/loadImage.do?fileId=${user.headFileId}" style="margin: 10px;width: 80px;height: 80px;border-radius: 40px;" />
+								</c:when>
+								<c:otherwise>
+									<img alt="" src="<%=request.getContextPath() %>/images/default_head.png" style="margin: 10px;width: 80px;height: 80px;border-radius: 40px;" />
+								</c:otherwise>
+							</c:choose>
+						</div>
+					</div>
+					<div style="height: 30px;">
+						<div style="height: 30px;text-align: center;">
+							<a href="<%=request.getContextPath()%>/main/edit"><h4>${sessionScope.user.username }</h4></a>
+						</div>
+					</div>
 				</div>
 				<div id="collapseOne" class="panel-collapse collapse in">
 					<div class="left-list-body">
 						<c:forEach items="${requestScope.friendList }" var="user">
-							<h3><a id="${user.username }" onclick="addTab('${user.username }','<%=request.getContextPath()%>/chatView')" href="javascript:void(0)">
+							<h5><a id="${user.username }" onclick="addTab('${user.username }','<%=request.getContextPath()%>/chatView')" href="javascript:void(0)">
 								<c:choose>
 									<c:when test="${not empty user.headFileId }">
 										<img alt="" src="<%=request.getContextPath() %>/loadImage.do?fileId=${user.headFileId}" /><b>${user.username }</b>
 									</c:when>
 									<c:otherwise>
-										<img alt="" src="<%=request.getContextPath() %>/images/tubiao.png" /><b>${user.username }</b>
+										<img alt="" src="<%=request.getContextPath() %>/images/default_head.png" /><b>${user.username }</b>
 									</c:otherwise>
 								</c:choose>
-							</a></h3>
+							</a></h5>
 						</c:forEach>
-						<!-- <h5><a id="http://www.youku.com/" onclick="addTab('zhangsan','/chatView')" href="javascript:void(0)">zhangsan</a></h5>
-						<h5><a id="http://www.iqiyi.com/" onclick="addTab('lisi','/chatView')" href="javascript:void(0)">lisi</a></h5> -->
 					</div>
 				</div>
 			</div>
